@@ -20,7 +20,7 @@ void add_goat(list<Goat> &trip, string [], string []);
 void display_trip(list<Goat> trip);
 int main_menu();
 
-
+void sort_goat(list<Goat> &trip);
 
 int main() {
     srand(time(0));
@@ -67,6 +67,26 @@ int main() {
                 cout << "Displaying goat data.\n";
                 display_trip(trip);
                 break;
+            case 4:
+                cout << "Sorting goat data.\n";
+                sort_goat(trip);
+                break;
+            case 5:
+                break;
+            case 6:
+                break;
+            case 7:
+                break;
+            case 8:
+                break;
+            case 9:
+                break;
+            case 10:
+                break;
+            case 11:
+                break;
+            case 12:
+                break;
             default:
                 cout << "Invalid selection.\n";
                 break;
@@ -82,7 +102,8 @@ int main_menu() {
     cout << "[1] Add a goat\n";
     cout << "[2] Delete a goat\n";
     cout << "[3] List goats\n";
-    cout << "[4] Quit\n";
+    cout << "[4] Sort goats\n";
+    cout << "[5] Quit\n";
     cout << "Choice --> ";
     int choice;
     cin >> choice;
@@ -133,4 +154,9 @@ int select_goat(list<Goat> trp) {
         cin >> input;
     }
     return input;
+}
+
+void sort_goat(list<Goat> &trip){
+    trip.sort();
+    cout << "Goat list sorted by name\n" << endl;
 }

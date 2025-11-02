@@ -30,22 +30,9 @@ public:
     string get_color() const        { return color; }
 
     // write overloaded < operator for the std::list
-    bool operator<(const Goat &other) const
-    {
-        //check if names are equal
-        if (name < other.name) return true;
-        if (name > other.name) return false;
-        
-        //checks if ags are equal
-        if (age < other.age) return true;
-        if (age > other.age) return false;
-        
-        //last case is checking color
-        if (color < other.color) return true;
-        if (color > other.color) return true;
-        //if nothing returns then two objects are equal
-        return false;
-    }
+    bool operator< (const Goat &other) const {
+            return name < other.name;
+        }
 };
 
 #endif
