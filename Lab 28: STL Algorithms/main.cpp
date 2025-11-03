@@ -33,6 +33,10 @@ void reverse_trip(list<Goat> &trip);
 
 void remove_by_age(list<Goat> &trip);
 
+void largest_goat_age(list<Goat> &trip);
+
+void smallest_goat_age(list<Goat> &trip);
+
 int main() {
     srand(time(0));
     bool again;
@@ -105,23 +109,27 @@ int main() {
                 display_trip(trip);
                 break;
             case 8:
+                cout << "Finding oldest goat\n";
+                largest_goat_age(trip);
                 display_trip(trip);
                 break;
             case 9:
+                cout << "Finding youngest goat\n";
                 display_trip(trip);
                 break;
             case 10:
-                display_trip(trip);
-                break;
-            case 11:
                 cout << "Reversing goat list";
                 reverse_trip(trip);
                 display_trip(trip);
                 break;
-            case 12:
+            case 11:
                 cout << "Clearing list\n";
                 clear_trip(trip);
                 display_trip(trip);
+                break;
+            case 12:
+                cout << "Exit Program\n";
+                return 1;
                 break;
             default:
                 cout << "Invalid selection.\n";
@@ -142,13 +150,15 @@ int main_menu() {
     cout << "[5] Total age of goats\n";
     cout << "[6] Search for goat\n";
     cout << "[7] Remove goats by age\n";
-    cout << "[11] Reverse list\n";
-    cout << "[12] Clear list\n";
-    cout << "[13] Quit\n";
+    cout << "[8] Oldest goat\n";
+    cout << "[9] Youngest goat\n";
+    cout << "[10] Reverse list\n";
+    cout << "[11] Clear list\n";
+    cout << "[12] Quit\n";
     cout << "Choice --> ";
     int choice;
     cin >> choice;
-    while (choice < 1 || choice > 14) {
+    while (choice < 1 || choice > 13) {
         cout << "Invalid, again --> ";
         cin >> choice;
     }
@@ -238,4 +248,13 @@ void remove_by_age(list<Goat> &trip){
     cin.ignore();
     trip.remove_if([&](const Goat& v){return v.get_age() < age;});
     cout << "Goat list was cleared of Goats under the age of " << age << endl;
+}
+
+void largest_goat_age(list<Goat> &trip){
+    auto oldest = max_element(trip.begin(),trip.end(),[](const Goat& a, const Goat& b){return a.get_age() < b.get_age();});
+    cout << "Oldest Goat: " << oldest->get_name() << " (" << oldest->get_age() << ", " << oldest->get_color() << ")" << endl;
+}
+
+void smallest_goat_age(list<Goat> &trip){
+    
 }
