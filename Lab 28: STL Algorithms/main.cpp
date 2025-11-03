@@ -21,21 +21,44 @@ void add_goat(list<Goat> &trip, string [], string []);
 void display_trip(list<Goat> trip);
 int main_menu();
 
-//function sort_goat sorts list by 
+//function sort_goat sorts list by alphabetical name order
+//argument: std::list
+//return: none
 void sort_goat(list<Goat> &trip);
 
+//function totalAge adds all the goats ages
+//argument: std::list
+//return: int
 int totalAge(list<Goat> &trip);
 
+//function search_name finds goat by name
+//argument: std::list
+//return: none
 void search_name(list<Goat> &trip);
 
+//function clear_trip clears entire list
+//argument: std::list
+//return: none
 void clear_trip(list<Goat> &trip);
 
+//function reverse_trip reverses order of list
+//argument: std::list
+//return: none
 void reverse_trip(list<Goat> &trip);
 
+//function remove_by_age removes goats by an age limit
+//argument: std::list
+//return: none
 void remove_by_age(list<Goat> &trip);
 
+//function largest_goat_age finds oldest goat in list
+//argument: std::list
+//return: none
 void largest_goat_age(list<Goat> &trip);
 
+//function smallest_goat_age finds youngest goat in list
+//argument: std::list
+//return: none
 void smallest_goat_age(list<Goat> &trip);
 
 int main() {
