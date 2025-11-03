@@ -29,7 +29,7 @@ void search_name(list<Goat> &trip);
 
 void clear_trip(list<Goat> &trip);
 
-
+void reverse_trip(list<Goat> &trip);
 
 int main() {
     srand(time(0));
@@ -110,6 +110,8 @@ int main() {
                 display_trip(trip);
                 break;
             case 11:
+                cout << "Reversing goat list";
+                reverse_trip(trip);
                 display_trip(trip);
                 break;
             case 12:
@@ -135,6 +137,7 @@ int main_menu() {
     cout << "[4] Sort goats\n";
     cout << "[5] Total age of goats\n";
     cout << "[6] Search for goat\n";
+    cout << "[11] Reverse list\n";
     cout << "[12] Clear list\n";
     cout << "[13] Quit\n";
     cout << "Choice --> ";
@@ -174,6 +177,7 @@ void display_trip(list<Goat> trp) {
              << gt.get_name()
              << " (" << gt.get_age()
              << ", " << gt.get_color() << ")\n";
+    cout << endl;
 }
 
 int select_goat(list<Goat> trp) {
@@ -215,4 +219,9 @@ void search_name(list<Goat> &trip){
 void clear_trip(list<Goat> &trip){
     trip.clear();
     cout << "Goat list was cleared\n" << endl;
+}
+
+void reverse_trip(list<Goat> &trip){
+    reverse(trip.begin(),trip.end());
+    cout << "Goat list was reversed\n" << endl;
 }
