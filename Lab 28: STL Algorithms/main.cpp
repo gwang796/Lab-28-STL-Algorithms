@@ -27,6 +27,8 @@ int totalAge(list<Goat> &trip);
 
 void search_name(list<Goat> &trip);
 
+void clear_trip(list<Goat> &trip);
+
 
 
 int main() {
@@ -111,6 +113,8 @@ int main() {
                 display_trip(trip);
                 break;
             case 12:
+                cout << "Clearing list\n";
+                clear_trip(trip);
                 display_trip(trip);
                 break;
             default:
@@ -131,6 +135,7 @@ int main_menu() {
     cout << "[4] Sort goats\n";
     cout << "[5] Total age of goats\n";
     cout << "[6] Search for goat\n";
+    cout << "[12] Clear list\n";
     cout << "[13] Quit\n";
     cout << "Choice --> ";
     int choice;
@@ -207,3 +212,7 @@ void search_name(list<Goat> &trip){
     }
 }
 
+void clear_trip(list<Goat> &trip){
+    trip.clear();
+    cout << "Goat list was cleared\n" << endl;
+}
