@@ -21,6 +21,7 @@ void add_goat(list<Goat> &trip, string [], string []);
 void display_trip(list<Goat> trip);
 int main_menu();
 
+//function sort_goat sorts list by 
 void sort_goat(list<Goat> &trip);
 
 int totalAge(list<Goat> &trip);
@@ -115,6 +116,7 @@ int main() {
                 break;
             case 9:
                 cout << "Finding youngest goat\n";
+                smallest_goat_age(trip);
                 display_trip(trip);
                 break;
             case 10:
@@ -237,7 +239,7 @@ void clear_trip(list<Goat> &trip){
 }
 
 void reverse_trip(list<Goat> &trip){
-    reverse(trip.begin(),trip.end());
+    trip.reverse();
     cout << "Goat list was reversed\n" << endl;
 }
 
@@ -256,5 +258,6 @@ void largest_goat_age(list<Goat> &trip){
 }
 
 void smallest_goat_age(list<Goat> &trip){
-    
+    auto youngest = min_element(trip.begin(),trip.end(),[](const Goat& a, const Goat& b){return a.get_age() < b.get_age();});
+    cout << "Youngest Goat: " << youngest->get_name() << " (" << youngest->get_age() << ", " << youngest->get_color() << ")" << endl;
 }
