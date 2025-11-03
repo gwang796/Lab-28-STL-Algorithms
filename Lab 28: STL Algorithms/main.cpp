@@ -25,6 +25,10 @@ void sort_goat(list<Goat> &trip);
 
 int totalAge(list<Goat> &trip);
 
+void search_name(list<Goat> &trip);
+
+
+
 int main() {
     srand(time(0));
     bool again;
@@ -55,6 +59,8 @@ int main() {
         trip.push_back(tmp);
     }
     
+    display_trip(trip);
+    
     // Goat Manager 3001 Engine
     int sel = main_menu();
     while (sel != 13) {
@@ -79,11 +85,14 @@ int main() {
                 display_trip(trip);
                 break;
             case 5:
+                cout << "Calculating total goat ages\n";
                 total = totalAge(trip);
                 cout << "Total age: " << total << endl;
                 display_trip(trip);
                 break;
             case 6:
+                cout << "Searching for goat\n";
+                search_name(trip);
                 display_trip(trip);
                 break;
             case 7:
@@ -121,6 +130,7 @@ int main_menu() {
     cout << "[3] List goats\n";
     cout << "[4] Sort goats\n";
     cout << "[5] Total age of goats\n";
+    cout << "[6] Search for goat\n";
     cout << "[13] Quit\n";
     cout << "Choice --> ";
     int choice;
@@ -184,4 +194,16 @@ int totalAge(list<Goat> &trip){
     return total;
 }
 
+void search_name(list<Goat> &trip){
+    string name;
+    cout << "Goat name to search for: ";
+    cin >> name;
+    cin.ignore();
+    auto it = find_if(trip.begin(), trip.end(), [&name](const Goat& v){return v.get_name() == name;});
+    if (it != trip.end()){
+        cout << name << " was found in trip" << endl;
+    } else {
+        cout << name << " was not found in list" << endl;
+    }
+}
 
