@@ -10,6 +10,7 @@
 #include <iomanip>
 #include <list>
 #include "Goat.h"
+#include <numeric>
 using namespace std;
 
 const int SZ_NAMES = 200, SZ_COLORS = 25, MAX_AGE = 20;
@@ -21,6 +22,8 @@ void display_trip(list<Goat> trip);
 int main_menu();
 
 void sort_goat(list<Goat> &trip);
+
+int totalAge(list<Goat> &trip);
 
 int main() {
     srand(time(0));
@@ -43,6 +46,7 @@ int main() {
     list<Goat> trip;
     int age;
     string name, color;
+    int total;
     for (int i = 0; i < tripSize; i++) {
         age = rand() % MAX_AGE;  // defined in Goat.h
         name = names[rand() % SZ_NAMES];
@@ -58,10 +62,12 @@ int main() {
             case 1:
                 cout << "Adding a goat.\n";
                 add_goat(trip, names, colors);
+                display_trip(trip);
                 break;
             case 2:
                 cout << "Removing a goat.\n";
                 delete_goat(trip);
+                display_trip(trip);
                 break;
             case 3:
                 cout << "Displaying goat data.\n";
@@ -70,22 +76,33 @@ int main() {
             case 4:
                 cout << "Sorting goat data.\n";
                 sort_goat(trip);
+                display_trip(trip);
                 break;
             case 5:
+                total = totalAge(trip);
+                cout << "Total age: " << total << endl;
+                display_trip(trip);
                 break;
             case 6:
+                display_trip(trip);
                 break;
             case 7:
+                display_trip(trip);
                 break;
             case 8:
+                display_trip(trip);
                 break;
             case 9:
+                display_trip(trip);
                 break;
             case 10:
+                display_trip(trip);
                 break;
             case 11:
+                display_trip(trip);
                 break;
             case 12:
+                display_trip(trip);
                 break;
             default:
                 cout << "Invalid selection.\n";
@@ -103,11 +120,12 @@ int main_menu() {
     cout << "[2] Delete a goat\n";
     cout << "[3] List goats\n";
     cout << "[4] Sort goats\n";
-    cout << "[5] Quit\n";
+    cout << "[5] Total age of goats\n";
+    cout << "[13] Quit\n";
     cout << "Choice --> ";
     int choice;
     cin >> choice;
-    while (choice < 1 || choice > 4) {
+    while (choice < 1 || choice > 14) {
         cout << "Invalid, again --> ";
         cin >> choice;
     }
@@ -160,3 +178,10 @@ void sort_goat(list<Goat> &trip){
     trip.sort();
     cout << "Goat list sorted by name\n" << endl;
 }
+
+int totalAge(list<Goat> &trip){
+    int total = accumulate(trip.begin(),trip.end(),0, [](int sum, const Goat& v){return sum + v.get_age();});
+    return total;
+}
+
+
