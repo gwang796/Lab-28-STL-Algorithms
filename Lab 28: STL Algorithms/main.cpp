@@ -31,6 +31,8 @@ void clear_trip(list<Goat> &trip);
 
 void reverse_trip(list<Goat> &trip);
 
+void remove_by_age(list<Goat> &trip);
+
 int main() {
     srand(time(0));
     bool again;
@@ -98,6 +100,8 @@ int main() {
                 display_trip(trip);
                 break;
             case 7:
+                cout << "Removing goats by age\n";
+                remove_by_age(trip);
                 display_trip(trip);
                 break;
             case 8:
@@ -137,6 +141,7 @@ int main_menu() {
     cout << "[4] Sort goats\n";
     cout << "[5] Total age of goats\n";
     cout << "[6] Search for goat\n";
+    cout << "[7] Remove goats by age\n";
     cout << "[11] Reverse list\n";
     cout << "[12] Clear list\n";
     cout << "[13] Quit\n";
@@ -224,4 +229,13 @@ void clear_trip(list<Goat> &trip){
 void reverse_trip(list<Goat> &trip){
     reverse(trip.begin(),trip.end());
     cout << "Goat list was reversed\n" << endl;
+}
+
+void remove_by_age(list<Goat> &trip){
+    int age;
+    cout << "Youngest Goat age: ";
+    cin >> age;
+    cin.ignore();
+    trip.remove_if([&](const Goat& v){return v.get_age() < age;});
+    cout << "Goat list was cleared of Goats under the age of " << age << endl;
 }
